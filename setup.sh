@@ -258,5 +258,8 @@ else
     simple_echo "IPv4 priority added"
 fi
 
+head_echo "Set timezone UTC"
+timedatectl set-timezone UTC
+
 head_echo "Setup completed!"
 head_echo "You can now log in: ssh $NEW_USER@$(hostname -I | awk '{print $1}')"
