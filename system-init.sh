@@ -78,7 +78,7 @@ ask_var() {
     fi
 }
 
-ENV_FILE="${ENV_FILE:-./setup.env}"
+ENV_FILE="${ENV_FILE:-./system-init.env}"
 
 if [[ -f "$ENV_FILE" ]]; then
     # shellcheck disable=SC1090
