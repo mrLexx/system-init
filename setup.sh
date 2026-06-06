@@ -89,7 +89,8 @@ ask_var NEW_USER "Enter username"
 ask_var USER_PASS_HASH "Enter password hash" true
 ask_var SSH_KEY "Enter SSH public key"
 
-head_echo "### NEW_USER=$NEW_USER"
+head_echo "### Set param: timezone UTC"
+timedatectl set-timezone UTC
 
 head_echo "### Waiting for APT locks to be released"
 locks=(/var/lib/dpkg/lock-frontend /var/lib/dpkg/lock /var/lib/apt/lists/lock)
@@ -257,9 +258,6 @@ else
     echo 'precedence ::ffff:0:0/96  100' >> "$FILE"
     simple_echo "IPv4 priority added"
 fi
-
-head_echo "Set timezone UTC"
-timedatectl set-timezone UTC
 
 head_echo "Setup completed!"
 head_echo "You can now log in: ssh $NEW_USER@$(hostname -I | awk '{print $1}')"
